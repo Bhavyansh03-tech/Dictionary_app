@@ -1,7 +1,7 @@
 [versions]
 accompanistSystemuicontroller = "<version>"
 accompanistSystemuicontrollerVersion = "0.34.0"
-agp = "8.3.1"
+agp = "8.4.0"
 converterGson = "2.11.0"
 hiltAndroid = "2.51.1"
 hiltAndroidVersion = "2.51"

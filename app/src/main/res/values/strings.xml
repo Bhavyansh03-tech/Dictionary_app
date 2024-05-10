@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dictionary</string>
+    <string name="can_get_data">Can\'t get data</string>
 </resources>
