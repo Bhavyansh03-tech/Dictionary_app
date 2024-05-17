@@ -76,6 +76,8 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     // Dagger-Hilt :->
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.lifecycle.viewmodel)
     implementation(libs.androidx.hilt.navigation.fragment)
     implementation(libs.hilt.android)
     kapt(libs.dagger.hilt.compiler)
