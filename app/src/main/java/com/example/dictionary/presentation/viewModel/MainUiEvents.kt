@@ -1,4 +1,4 @@
-package com.example.dictionary.presentation
+package com.example.dictionary.presentation.viewModel
 
 sealed class MainUiEvents {
 

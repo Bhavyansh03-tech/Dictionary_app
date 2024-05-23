@@ -1,4 +1,4 @@
-package com.example.dictionary.presentation
+package com.example.dictionary.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,14 +19,30 @@ class MainViewModel @Inject constructor(
 
     // Create state variable :->
     private val _mainState = MutableStateFlow(MainState())
-    private val mainState = _mainState.asStateFlow()
+    val mainState = _mainState.asStateFlow()
 
-    private val searchJob: Job? = null
+    private var searchJob: Job? = null
+
+    init {
+        // Creating this block to add a job that search is displayed in search box already :->
+        _mainState.update {
+            it.copy(searchWord = "Word")
+        }
+
+        searchJob?.cancel()
+        searchJob = viewModelScope.launch {
+            loadWordResult()
+        }
+    }
 
     fun onEvent(mainUiEvent: MainUiEvents){
         when (mainUiEvent){
             MainUiEvents.OnSearchClick -> {
-                loadWordResult()
+                // Adding job to search :->
+                searchJob?.cancel() // Canceling previous job.
+                searchJob = viewModelScope.launch {
+                    loadWordResult()
+                }
             }
             is MainUiEvents.OnSearchWordChange -> {
                 _mainState.update {

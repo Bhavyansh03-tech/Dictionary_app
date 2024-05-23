@@ -15,7 +15,6 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -31,19 +30,24 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -52,7 +56,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -69,28 +72,31 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Retrofit :->
+    // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    // Dagger-Hilt :->
+    // Dagger-Hilt
     implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.hilt.lifecycle.viewmodel)
-    implementation(libs.androidx.hilt.navigation.fragment)
+    implementation(libs.androidx.hilt.lifecycle.viewmodel)
     implementation(libs.hilt.android)
     kapt(libs.dagger.hilt.compiler)
-    kapt(libs.androidx.hilt.compiler)
+    kapt(libs.hilt.compiler)
 
-    // Coroutines :->
+    // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
 
-    // Coroutine Lifecycle Scopes :->
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    // Coroutine Lifecycle Scopes
+    implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // System Ui Controller :->
-    implementation(libs.accompanist.systemuicontroller.v0340)
+    // System Ui Controller
+    implementation(libs.accompanist.systemuicontroller)
+}
+
+kapt {
+    correctErrorTypes = true
 }
