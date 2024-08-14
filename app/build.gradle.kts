@@ -85,7 +85,6 @@ dependencies {
     ksp(libs.hilt.android.compiler)
     implementation(libs.dagger.hilt.navigation.compose)
 
-
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
