@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.daggerHilt)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -57,7 +58,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
@@ -78,12 +78,13 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.logging.interceptor)
 
-    // Dagger-Hilt
-    implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.androidx.hilt.lifecycle.viewmodel)
-    implementation(libs.hilt.android)
-    kapt(libs.dagger.hilt.compiler)
-    kapt(libs.hilt.compiler)
+    // Dagger-Hilt :->
+    implementation(libs.dagger.hilt)
+    ksp(libs.dagger.hilt.compiler)
+    ksp(libs.dagger.hilt.androidx)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.dagger.hilt.navigation.compose)
+
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
@@ -97,6 +98,8 @@ dependencies {
     implementation(libs.accompanist.systemuicontroller)
 }
 
-kapt {
-    correctErrorTypes = true
+kotlin {
+    sourceSets.main {
+        kotlin.srcDirs += file("build/generated/ksp/main/kotlin")
+    }
 }
