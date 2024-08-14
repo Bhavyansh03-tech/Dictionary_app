@@ -21,7 +21,7 @@ This is a Dictionary App developed using Kotlin, Jetpack Compose, and various mo
 - **State Management:** ViewModel, LiveData
 
 ## Screenshots
-<img src="https://github.com/user-attachments/assets/d08acb33-87b1-47f8-b271-a14de9e0392e" alt="Second Screenshot" style="width: 200px; height: auto;">
+<img src="https://github.com/user-attachments/assets/454fbab1-0dfc-4840-bd6f-bb80c66637ee" alt="Second Screenshot" style="width: 200px; height: auto;">
 
 ## Setup
 ### Clone the Repository
